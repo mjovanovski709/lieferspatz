@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=100%, maximum-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="static/restaurants.css" />
+    <link rel="stylesheet" type="text/css" href="static/styleguide.css" />
+    <link rel="stylesheet" type="text/css" href="static/globals.css" />
+  </head>
+  <body style="margin: 0; background: #ffffff">
+    <input type="hidden" id="anPageName" name="page" value="restaurants" />
+    <div class="restaurants screen">
+      <div class="top-bar">
+        <img class="logo-lieferspatz-1" src="static/img/logo-lieferspatz-1.png" alt="logo lieferspatz 1" />
+        <div class="title-6 valign-text-middle title-12"></div>
+        <div class="navigation">
+          <a href="{{ url_for('home') }}" class="button button-danger">Home</a>
+          <a href="{{ url_for('signup') }}" class="button button-danger">Sign up</a>      
+          <a href="{{ url_for('login') }}" class="button button-danger">Log in</a>
+          <a href="{{ url_for('about') }}" class="button button-danger">About us</a>
+          {% if session['user_id'] %}
+              <a href="#" id="balance-btn" class="button button-danger">Balance</a>
+              <a href="{{ url_for('cart') }}" class="button button-danger">Cart</a> 
+              {% if session['user_type'] == 'Customer' %}
+              <a href="{{ url_for('orders') }}" class="button button-danger">Orders</a>
+              {% elif session['user_type'] == 'Restaurant' %}
+              <a href="{{ url_for('restaurant_orders') }}" class="button button-danger">Orders</a>
+          {% endif %}
+          
+              <a href="{{ url_for('logout') }}" class="button button-danger">Logout</a>
+              <span class="user-welcome">Welcome {{ session['user_name'] }}</span>
+          {% else %}
+              <a href="{{ url_for('login') }}" class="button button-danger">Login</a>
+              <a href="{{ url_for('signup') }}" class="button button-danger">Sign Up</a>
+          {% endif %}
+        </div>      
+      </div>
+      <div class="section">
+        <div class="container">
+          <h1 class="title-1 roboto-bold-black-40px">Welcome to Lieferspatz</h1>
+          <p class="description roboto-bold-black-16px">Bringing convenience to your doorstep</p>
+        </div>
+      </div>
+      <div class="products">
+        <div class="title-7 title-13 roboto-bold-black-40px">Restaurants Nearby</div>        
+        <div class="list">
+          {% if restaurants %}
+            <div class="row">
+              {% for data in restaurants %}
+              <!-- Each restaurant gets its own card -->
+              <a href="{{ url_for('customer_menu', restaurant_id=data.restaurant.RestaurantID) }}" class="restaurant-card">
+                  <div class="card">
+                      <div class="text-content">
+                          <div class="title roboto-semi-bold-black-24px">{{ data.restaurant.Name }}</div>
+                          <p class="subtitle roboto-bold-black-14px">{{ data.restaurant.Description }}</p>
+                          <p class="subtitle roboto-bold-black-14px">Delivery Area: {{ data.delivery_area_str }}</p>
+                          <p class="subtitle roboto-bold-black-14px">Working hours: {{ data.restaurant.OpenTime.strftime('%H:%M') }} - {{ data.restaurant.CloseTime.strftime('%H:%M') }}</p>
+                        </div>
+                  </div>
+              </a>
+          {% endfor %}          
+            </div>
+          {% else %}
+            <div class="title-2 roboto-semi-bold-black-24px">No registered restaurants available at the moment.</div>
+          {% endif %}
+        </div>
+      </div>
+      </div>
+      <div class="section-1">
+        <div class="container-3 container-4 roboto-bold-black-16px">
+          <p class="title-10 valign-text-middle title-13">© 2024 Lieferspatz. All Rights Reserved</p>
+          <div class="title-11 valign-text-middle title-13">Terms &amp; Conditions</div>
+          <div class="title-12 valign-text-middle title-13">Privacy Policy</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

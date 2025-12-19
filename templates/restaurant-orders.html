@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=100%, maximum-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="static/restaurant-orders.css" />
+    <link rel="stylesheet" type="text/css" href="static/styleguide.css" />
+    <link rel="stylesheet" type="text/css" href="static/globals.css" />
+  </head>
+  <body style="margin: 0; background: #ffffff">
+    <input type="hidden" id="anPageName" name="page" value="restaurant-orders" />
+    <div class="restaurant-orders screen">
+      <div class="flash-messages">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <ul>
+              {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+      </div>
+      <div id="balance-modal" class="modal hidden">
+        <div class="modal-content">
+          <span class="close-button" id="close-balance-modal">&times;</span>
+          <p id="balance-text">Your balance is: €0.00</p>
+        </div>
+      </div>  
+      <script src="{{ url_for('static', filename='js/globals.js') }}"></script>
+      <div class="top-bar">
+        <img class="logo-lieferspatz-1" src="static/img/logo-lieferspatz-1.png" alt="logo lieferspatz 1" />
+        <div class="title-6 valign-text-middle title-12"></div>
+        <div class="navigation">
+          <a href="{{ url_for('home') }}" class="button button-danger">Home</a>
+          <a href="{{ url_for('about') }}" class="button button-danger">About us</a>
+          {% if session['user_id'] %}
+              <a href="#" id="balance-btn" class="button button-danger">Earnings</a>
+              <a href="{{ url_for('restaurant_orders') }}" class="button button-danger">Orders</a>
+              <a href="{{ url_for('restaurant_menu', restaurant_id=restaurant.RestaurantID) }}" class="button button-danger">Menu</a>
+              <a href="{{ url_for('restaurant_dashboard') }}" class="button button-danger">Dashboard</a>
+              <a href="{{ url_for('logout') }}" class="button button-danger">Logout</a>
+              <span class="user-welcome">Welcome {{ session['user_name'] }}</span>
+          {% else %}
+              <a href="{{ url_for('login') }}" class="button button-danger">Login</a>
+              <a href="{{ url_for('signup') }}" class="button button-danger">Sign Up</a>
+          {% endif %}
+        </div>      
+      </div>
+      <div class="section">
+        <div class="container">
+          <div class="title-3">Welcome to Lieferspatz</div>
+          <p class="description roboto-bold-black-16px">Bringing convenience to your doorstep</p>
+        </div>
+        <img class="vector-200" src="img/vector-200-8.svg" alt="Vector 200" />
+      </div>      
+        <div class="orders">
+          <!-- Ongoing Orders Section -->
+          <div class="orders-container">
+            <h1 class="title-4 roboto-bold-black-50px">Ongoing Orders</h1>
+            {% if ongoing_orders %}
+                <div class="row">
+                    {% for order in ongoing_orders %}
+                    <div class="order-card">
+                        <div class="card">
+                            <div class="text-content">
+                                <div class="title roboto-semi-bold-black-24px">Order #{{ order.OrderID }}</div>
+                                <div class="subtitle roboto-bold-black-14px">{{ order.CreatedAt.strftime('%d.%m.%Y') }}</div>
+                                <p>Additional Note: {{ order.Notes }}</p>
+                                <p class="subtitle roboto-bold-black-14px scrollable-items">
+                                    {% for item in order.order_items %}
+                                      {{ item.Quantity }}x {{ item.MenuItemName }}<br />
+                                    {% endfor %}
+                                </p>
+                                <div class="subtitle-1 roboto-bold-black-20px">Status: {{ order.Status }}</div>
+                                <div class="subtitle-2 roboto-bold-black-20px">Order Total: {{ order.TotalAmount }} €</div>
+                                <!-- Accept and Reject Buttons -->
+                                {% if order.Status == 'Processing' %}
+                                <div class="action-buttons">
+                                    <form method="POST" action="{{ url_for('accept_or_reject_order', order_id=order.OrderID, action='accept') }}">
+                                        <button type="submit" class="button-1 button-success">Accept</button>
+                                    </form>
+                                    <form method="POST" action="{{ url_for('accept_or_reject_order', order_id=order.OrderID, action='reject') }}">
+                                        <button type="submit" class="button-2 button-reject">Reject</button>
+                                    </form>
+                                </div>
+                                {% endif %}
+                                <!-- Mark as Done Button -->
+                                {% if order.Status == 'Being Prepared' %}
+                                <div class="action-buttons">
+                                  <form method="POST" action="{{ url_for('mark_as_done', order_id=order.OrderID) }}">
+                                    <button type="submit" class="button-1 button-success">Mark as Done</button>
+                                  </form>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="order-card">
+                    <div class="card">
+                        <div class="text-content">
+                            <div class="title-2 roboto-semi-bold-black-24px">No ongoing orders at the moment.</div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+          <!-- Completed Orders Section -->
+          <div class="orders-container-1">
+            <h1 class="title-6 roboto-bold-black-50px">Completed Orders</h1>
+            {% if completed_orders %}
+                <div class="row">
+                    {% for order in completed_orders %}
+                    <div class="order-card">
+                        <div class="card">
+                            <div class="text-content">
+                                <div class="title roboto-semi-bold-black-24px">Order #{{ order.OrderID }}</div>
+                                <div class="subtitle roboto-bold-black-14px">{{ order.CreatedAt.strftime('%d.%m.%Y') }}</div>
+                                <p>Additional Note: {{ order.Notes }}</p>
+                                <p class="subtitle roboto-bold-black-14px scrollable-items">
+                                    {% for item in order.order_items %}
+                                      {{ item.Quantity }}x {{ item.MenuItemName }}<br />
+                                    {% endfor %}
+                                </p>
+                                <div class="subtitle-1 roboto-bold-black-20px">Status: {{ order.Status }}</div>
+                                <div class="subtitle-2 roboto-bold-black-20px">Order Total: {{ order.TotalAmount }} €</div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="order-card">
+                    <div class="card">
+                        <div class="text-content">
+                            <div class="title-2 roboto-semi-bold-black-24px">No completed orders at the moment.</div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+          </div>
+          <!-- Fallback for No Orders -->
+          {% if not ongoing_orders and not completed_orders %}
+          <div class="fallback-message">
+              <div class="text-content">
+                  <div class="title-2 roboto-semi-bold-black-24px">There have been no orders yet.</div>
+              </div>
+          </div>
+          {% endif %}
+        </div>
+      <div class="section-1">
+        <div class="container-3 container-4 roboto-regular-normal-black-16px">
+          <p class="title-10 valign-text-middle title-13">© 2024 Lieferspatz. All Rights Reserved</p>
+          <div class="title-11 valign-text-middle title-13">Terms &amp; Conditions</div>
+          <div class="title-12 valign-text-middle title-13">Privacy Policy</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

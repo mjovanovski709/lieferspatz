@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=100%, maximum-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='landing-page.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styleguide.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='globals.css') }}" />
+  </head>
+  <body style="margin: 0; background: #ffffff">
+    <input type="hidden" id="anPageName" name="page" value="landing-page" />
+    <div class="landing-page screen">
+      <!-- Flash Message Container -->
+      <div class="flash-messages">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <ul>
+              {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+      </div>
+      <script src="{{ url_for('static', filename='js/globals.js') }}"></script>
+      <div class="top-bar">
+        <img class="logo-lieferspatz-1" src="static/img/logo-lieferspatz-1.png" alt="logo lieferspatz 1" />
+        <div class="title-6 valign-text-middle title-12"></div>
+        <div class="navigation">
+          {% if user_type == 'Customer' %}
+          <a href="{{ url_for('orders') }}" class="button button-danger">Orders</a>
+          {% endif %}
+          <a href="{{ url_for('signup') }}" class="button button-danger">Sign up</a>      
+          <a href="{{ url_for('login') }}" class="button button-danger">Log in</a>
+          <a href="{{ url_for('about') }}" class="button button-danger">About us</a>
+        </div>
+      </div>
+      <div class="section">
+        <div class="container-1 container-4">
+          <h1 class="title roboto-bold-black-40px">Welcome to Lieferspatz</h1>
+          <p class="description roboto-bold-black-16px">Bringing convenience to your doorstep</p>
+        </div>
+        <img class="vector-200" src="{{ url_for('static', filename='static/img/vector-200.svg') }}" alt="Decorative vector graphic" />
+      </div>
+      <div class="products">
+        <div class="container-2 container-4">
+          <div class="title roboto-bold-black-40px">Our Offerings</div>
+          <p class="description roboto-regular-normal-black-16px">Delicious delights just for you</p>
+          <div class="button-3">
+            <a href="/restaurants" class="primary">
+              <div class="title-7 title-12">View Restaurants</div>
+            </a>
+          </div>
+        </div>
+        <div class="list">
+          <div class="row">
+            <div class="card">
+              <div class="image-container-1">
+                <div class="image-1">
+                  <div class="overlap-group">
+                    <div class="tag"><div class="text roboto-medium-romance-12px">New</div></div>
+                  </div>
+                </div>
+              </div>
+              <div class="text-content">
+                <div class="title-1 title-12 roboto-semi-bold-black-24px">Hamburger</div>
+                <p class="subtitle roboto-light-black-14px">
+                  A juicy, seasoned patty nestled in a soft bun, topped with crisp lettuce, ripe tomatoes, and savory
+                  condiments. A timeless favorite for hearty appetites.
+                </p>
+                <div class="icon-buttons-1"></div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="image-container">
+                <div class="image">
+                  <div class="overlap-group-1 overlap-group-3">
+                    <div class="tag-3"><div class="text roboto-medium-romance-12px">Popular</div></div>
+                  </div>
+                </div>
+              </div>
+              <div class="text-content">
+                <div class="title-8 title-12">Pizza</div>
+                <p class="subtitle roboto-light-black-14px">
+                  A delightful Italian classic with a crispy crust, tangy tomato sauce, gooey melted cheese, and a
+                  variety of fresh toppings. Perfectly baked for a slice of pure joy.
+                </p>
+              </div>
+            </div>
+            <div class="card">
+              <div class="image-container">
+                <div class="image">
+                  <div class="overlap-group-2 overlap-group-3">
+                    <div class="tag-3"><div class="text roboto-medium-romance-12px">Bestseller</div></div>
+                  </div>
+                </div>
+              </div>
+              <div class="text-content">
+                <div class="title-1 title-12 roboto-semi-bold-black-24px">Sushi</div>
+                <p class="subtitle roboto-light-black-14px">
+                  Elegant and fresh, sushi offers hand-rolled bites of vinegared rice, premium seafood, and crisp
+                  vegetables, artfully crafted for a flavorful, Japanese-inspired experience.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <img class="vector-200" src="{{ url_for('static', filename='static/img/vector-200.svg') }}" alt="Decorative vector graphic" />
+      </div>
+      <div class="reviews">
+        <div class="container">
+          <div class="title-2 title-12 roboto-bold-black-40px">Customer Reviews</div>
+          <div class="description-1 roboto-regular-normal-black-16px">What our customers say</div>
+        </div>
+        <div class="list-1 list-4">
+          <div class="row-1 row-3">
+            <div class="card-1 card-3">
+              <div class="user">
+                <div class="avatar">
+                  <div class="avatar-3"><img class="bear-1" src="static/img/bear-1.png" alt="bear 1" /></div>
+                  <div class="frame-1"><div class="title-3 title-12">Customer 1</div></div>
+                </div>
+                <img class="frame-1" src="{{ url_for('static', filename='img/frame-1.svg') }}" alt="Frame 1" />
+              </div>
+              <p class="title-4 title-12 roboto-regular-normal-black-16px">Great service and quality food</p>
+              <div class="icon-buttons roboto-regular-normal-black-16px">
+                <div class="icon valign-text-middle">🌟</div>
+                <div class="icon valign-text-middle">👍</div>
+              </div>
+            </div>
+            <div class="card-1 card-3">
+              <div class="user">
+                <div class="avatar">
+                  <div class="avatar-3">
+                    <div class="avatar-2 avatar-3"><img class="bear-1" src="static/img/bear-1.png" alt="bear 1" /></div>
+                  </div>
+                  <div class="frame-1"><div class="title-3 title-12">Customer 2</div></div>
+                </div>
+                <img class="frame-1" src="{{ url_for('static', filename='img/frame-1.svg') }}" alt="Frame 1" />
+              </div>
+              <p class="title-4 title-12 roboto-regular-normal-black-16px">Fast delivery and tasty meals</p>
+              <div class="icon-buttons roboto-regular-normal-black-16px">
+                <div class="icon valign-text-middle">🌟</div>
+                <div class="icon valign-text-middle">👍</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <img class="vector-200" src="{{ url_for('static', filename='static/img/vector-200.svg') }}" alt="Decorative vector graphic" />
+      </div>
+      <div class="list-2 list-4">
+        <div class="container"><div class="title-2 title-12 roboto-bold-black-40px">Additional Information</div></div>
+        <div class="list-3 list-4">
+          <div class="row-3">
+            <div class="item">
+              <div class="frame"><div class="icon-1 valign-text-middle">🔔</div></div>
+              <div class="frame-1">
+                <div class="title-5 title-12">Notifications</div>
+                <div class="subtitle-1">Stay updated</div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="frame"><div class="icon-1 valign-text-middle">📞</div></div>
+              <div class="frame-1">
+                <div class="title-5 title-12">Contact Us</div>
+                <div class="subtitle-1">Get in touch</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <img class="vector-200" src="{{ url_for('static', filename='static/img/vector-200.svg') }}" alt="Decorative vector graphic" />
+      </div>
+      <div class="section-1">
+        <div class="container-3 container-4 roboto-regular-normal-black-16px">
+          <p class="title-9 valign-text-middle title-12">© 2024 Lieferspatz. All Rights Reserved</p>
+          <div class="title-10 valign-text-middle title-12">Terms &amp; Conditions</div>
+          <div class="title-11 valign-text-middle title-12">Privacy Policy</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

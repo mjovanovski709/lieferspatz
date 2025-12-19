@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=100%, maximum-scale=1.0" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='restaurant-delete-item.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styleguide.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='globals.css')}}">
+  </head>
+  <body style="margin: 0; background: #ffffff">
+    <input type="hidden" id="anPageName" name="page" value="restaurant-delete-item" />
+    <div class="restaurant-delete-item screen">
+      <div class="flash-messages">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <ul>
+              {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+      </div>
+      <script src="{{ url_for('static', filename='js/globals.js') }}"></script>
+      <div class="top-bar">
+        <img class="logo-lieferspatz-1" src="{{ url_for('static', filename='img/logo-lieferspatz-1.png')}}" alt="logo lieferspatz 1" />
+        <div class="title-6 valign-text-middle title-12"></div>
+        <div class="navigation">
+          <a href="{{ url_for('home') }}" class="button button-danger">Home</a>
+          <a href="{{ url_for('about') }}" class="button button-danger">About us</a>
+          {% if session['user_id'] %}
+              <a href="#" id="balance-btn" class="button button-danger">Earnings</a>
+              <a href="{{ url_for('restaurant_menu', restaurant_id=restaurant.RestaurantID) }}" class="button button-danger">Menu</a>
+              <a href="{{ url_for('restaurant_orders' , restaurant_id=restaurant.RestaurantID) }}" class="button button-danger">Orders</a>
+              <a href="{{ url_for('logout') }}" class="button button-danger">Logout</a>
+              <span class="user-welcome">Welcome {{ session['user_name'] }}</span>
+          {% else %}
+              <a href="{{ url_for('login') }}" class="button button-danger">Login</a>
+              <a href="{{ url_for('signup') }}" class="button button-danger">Sign Up</a>
+          {% endif %}
+        </div>      
+      </div>
+      <div class="section">
+        <div class="container">
+          <div class="title-2 roboto-bold-black-40px">Welcome to Lieferspatz</div>
+          <p class="description roboto-bold-black-16px">Bringing convenience to your doorstep</p>
+        </div>
+        <img class="vector-200" src="img/vector-200-8.svg" alt="Vector 200" />
+      </div>
+        <div class="orders">
+            <h1 class="title-3 roboto-bold-black-50px">Delete items from menu</h1>
+            <form method="POST" action="{{ url_for('delete_items', restaurant_id=restaurant.RestaurantID) }}">
+              {% if menu_items %}
+                <p class="check-box roboto-semi-bold-black-20px">
+                    Check the box on the right to select the item you want to delete from your menu.
+                </p>
+                <div class="order-card">
+                {% for item in menu_items %}
+                    <div class="card">
+                        <div class="text-content">
+                            <div class="subtitle roboto-bold-black-32px">Price: {{ item.Price }} €</div>
+                            <p class="subtitle-1 roboto-bold-black-20px">{{ item.Description }}</p>
+                            <div class="title-4 roboto-semi-bold-black-32px">{{ item.Name }}</div>
+                        </div>
+                        <input type="checkbox" class="checkbox" name="delete_items" value="{{ item.MenuItemID }}" />
+                    </div>
+                {% endfor %}
+                </div>
+                <button type="submit" class="button-3">
+                  <div class="title-8">Delete selected items</div>
+                </button>
+            {% else %}
+                <div class="title-7 roboto-semi-bold-black-24px">No items available to delete.</div>
+            {% endif %}
+          </form>  
+        </div>
+        <div class="section-1">
+          <div class="container-3 container-4 roboto-regular-normal-black-16px">
+            <p class="title-10 valign-text-middle title-13">© 2024 Lieferspatz. All Rights Reserved</p>
+            <div class="title-11 valign-text-middle title-13">Terms &amp; Conditions</div>
+            <div class="title-12 valign-text-middle title-13">Privacy Policy</div>
+          </div>
+        </div>
+    </div>
+  </body>
+</html>

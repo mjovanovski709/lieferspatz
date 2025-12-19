@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=100%, maximum-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="static/about-us.css" />
+    <link rel="stylesheet" type="text/css" href="static/styleguide.css" />
+    <link rel="stylesheet" type="text/css" href="static/globals.css" />
+  </head>
+  <body style="margin: 0; background: #ffffff">
+    <input type="hidden" id="anPageName" name="page" value="about-us" />
+    <div class="about-us screen">
+      <div class="flash-messages">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <ul>
+              {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+      </div>
+      <script src="{{ url_for('static', filename='js/globals.js') }}"></script>
+      <div class="top-bar">
+        <img class="logo-lieferspatz-1" src="static/img/logo-lieferspatz-1.png" alt="logo lieferspatz 1" />
+        <div class="title-4 valign-text-middle"></div>
+        <div class="navigation">
+          <a href="{{ url_for('home') }}" class="button button-danger">Home</a>
+          {% if session['user_type'] == 'Customer' %}
+          <a href="{{ url_for('orders') }}" class="button button-danger">Orders</a>
+          {% elif session['user_type'] == 'Restaurant' %}
+          <a href="{{ url_for('restaurant_orders') }}" class="button button-danger">Orders</a>
+      {% endif %}      
+          <a href="{{ url_for('signup') }}" class="button button-danger">Sign up</a>      
+          <a href="{{ url_for('login') }}" class="button button-danger">Log in</a>
+          <a href="{{url_for('show_restaurants')}}" class="=button button-danger">Restaurants</a>
+          <a href="{{ url_for('about') }}" class="button button-danger">About us</a>
+          </div>  
+      </div>
+      <div class="section">
+        <div class="container-1 container-3">
+          <h1 class="title-5 roboto-bold-black-40px">Our Story</h1>
+          <p class="description roboto-bold-black-16px">
+            Fast-rising, student-driven, and redefining food delivery with speed, affordability, and sustainability.
+          </p>
+        </div>
+        <img class="vector-200" src="{{ url_for('static', filename='static/img/vector-200.svg') }}" alt="Decorative vector graphic" />
+      </div>
+      <div class="products">
+        <img class="vector-200" src="{{ url_for('static', filename='static/img/vector-200.svg') }}" alt="Decorative vector graphic" />
+        <div class="button-3">
+          <a href="{{ url_for('signup') }}" class="title-6 primary button-3">Sign up</a>
+        </div>
+        <div class="title-7 roboto-bold-black-40px">Lieferspatz</div>
+        <div class="title-8 roboto-bold-black-32px">About Lieferspatz</div>
+        <div class="title-9 roboto-bold-black-32px">Our Mission</div>
+        <div class="title-10 roboto-bold-black-32px">Sustainability at Our Core</div>
+        <div class="title-11 roboto-bold-black-32px">What Makes Us Different?</div>
+        <div class="title-12 roboto-bold-black-32px">Join the Movement</div>
+        <p class="description-1 roboto-bold-black-24px">
+          At Lieferspatz, we’re more than just a food delivery service—we’re a movement. Born from the minds of a
+          passionate group of students, we set out to revolutionize the way people experience food delivery. We believe
+          that getting your favorite meal should be fast, affordable, and sustainable, without compromising on quality.
+        </p>
+        <p class="description-2 roboto-bold-black-24px">
+          We exist to deliver your cravings at lightning speed while ensuring the lowest prices on the market. Whether
+          you&#39;re a student pulling an all-nighter, a busy professional, or just someone who loves great food,
+          Lieferspatz is here to bring your favorite meals straight to your door—hot, fresh, and in record time.
+        </p>
+        <p class="description-3 roboto-bold-black-24px">
+          Food delivery shouldn’t cost the Earth. That’s why Lieferspatz is dedicated to being the most CO₂-efficient
+          delivery service available. From eco-friendly packaging to smart delivery routing, we are constantly
+          innovating to reduce our carbon footprint. Because the future of food delivery isn’t just fast—it’s
+          responsible.
+        </p>
+        <p class="description-4 roboto-bold-black-24px">
+          Lieferspatz isn’t just a company—it’s a community-driven revolution in food delivery. We’re shaping the
+          future, one meal at a time. Ready to experience the fastest, smartest, and most sustainable delivery service?
+          Order now and be part of something bigger.<br /><br />🚀 Lieferspatz – Fast. Affordable. Sustainable.
+        </p>
+        <p class="description-5 roboto-bold-black-24px">
+          ✅ Speed like never before – Our cutting-edge logistics ensure you get your food faster than ever.<br />✅
+          Student-powered innovation – We leverage technology, data, and creativity to reshape the industry.<br />✅
+          Unbeatable prices – No hidden fees, no overpriced meals—just the best deals for you.<br />✅ Eco-conscious
+          delivery – Every order takes us one step closer to a greener future.
+        </p>
+      </div>
+      <div class="reviews">
+        <div class="container">
+          <div class="title roboto-bold-black-40px">Customer Reviews</div>
+          <div class="description-6 roboto-bold-black-16px">What our customers say</div>
+        </div>
+        <div class="list">
+          <div class="row">
+            <div class="card">
+              <div class="user">
+                <div class="avatar">
+                  <div class="avatar-3"><img class="bear-1" src="static/img/bear-1.png" alt="bear 1" /></div>
+                  <div class="frame-1"><div class="title-1">Customer 1</div></div>
+                </div>
+                <img class="frame-1" src="{{ url_for('static', filename='img/frame-1.svg') }}" alt="Frame 1" />
+              </div>
+              <p class="title-2 roboto-bold-black-16px">Great service and quality food</p>
+              <div class="icon-buttons roboto-bold-black-16px">
+                <div class="icon valign-text-middle">🌟</div>
+                <div class="icon valign-text-middle">👍</div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="user">
+                <div class="avatar">
+                  <div class="avatar-3">
+                    <div class="avatar-3"><img class="bear-1" src="static/img/bear-1.png" alt="bear 1" /></div>
+                  </div>
+                  <div class="frame-1"><div class="title-1">Customer 2</div></div>
+                </div>
+                <img class="frame-1" src="{{ url_for('static', filename='img/frame-1.svg') }}" alt="Frame 1" />
+              </div>
+              <p class="title-2 roboto-bold-black-16px">Fast delivery and tasty meals</p>
+              <div class="icon-buttons roboto-bold-black-16px">
+                <div class="icon valign-text-middle">🌟</div>
+                <div class="icon valign-text-middle">👍</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <img class="vector-200" src="{{ url_for('static', filename='static/img/vector-200.svg') }}" alt="Decorative vector graphic" />
+      </div>
+      <div class="list-1 list-3">
+        <div class="container"><div class="title roboto-bold-black-40px">Additional Information</div></div>
+        <div class="list-2 list-3">
+          <div class="row-1">
+            <div class="item">
+              <div class="frame"><div class="icon-1 valign-text-middle">🔔</div></div>
+              <div class="frame-1">
+                <div class="title-3 roboto-bold-black-20px">Notifications</div>
+                <div class="subtitle">Stay updated</div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="frame"><div class="icon-1 valign-text-middle">📞</div></div>
+              <div class="frame-1">
+                <div class="title-3 roboto-bold-black-20px">Contact Us</div>
+                <div class="subtitle">Get in touch</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <img class="vector-200" src="{{ url_for('static', filename='static/img/vector-200.svg') }}" alt="Decorative vector graphic" />
+      </div>
+      <div class="section-1">
+        <div class="container-2 container-3 roboto-bold-black-16px">
+          <p class="title-13 valign-text-middle">© 2024 Lieferspatz. All Rights Reserved</p>
+          <div class="title-14 valign-text-middle">Terms &amp; Conditions</div>
+          <div class="title-15 valign-text-middle">Privacy Policy</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

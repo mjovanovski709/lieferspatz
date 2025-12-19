@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=100%, maximum-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="static/orders.css" />
+    <link rel="stylesheet" type="text/css" href="static/styleguide.css" />
+    <link rel="stylesheet" type="text/css" href="static/globals.css" />
+  </head>
+  <body style="margin: 0; background: #ffffff">
+    <input type="hidden" id="anPageName" name="page" value="orders" />
+    <div class="orders screen">
+      <div class="flash-messages">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <ul>
+              {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+      </div>
+      <script src="{{ url_for('static', filename='js/globals.js') }}"></script>
+      <div class="top-bar">
+        <img class="logo-lieferspatz-1" src="static/img/logo-lieferspatz-1.png" alt="logo lieferspatz 1" />
+        <div class="title-6 valign-text-middle"></div>
+        <div class="navigation">
+          <a href="{{ url_for('home') }}" class="button button-danger">Home</a>      
+          <a href="{{ url_for('orders') }}" class="button button-danger">Orders</a>
+          <a href="{{ url_for('cart') }}" class="button button-danger">Cart</a>
+          <a href="{{ url_for('about') }}" class="button button-danger">About Us</a>
+      
+          {% if session['user_id'] %}
+              <a href="{{ url_for('logout') }}" class="button button-danger">Logout</a>
+              <span class="user-welcome">Welcome {{ session['user_name'] }}</span>
+          {% else %}
+              <a href="{{ url_for('login') }}" class="button button-danger">Login</a>
+              <a href="{{ url_for('signup') }}" class="button button-danger">Sign Up</a>
+          {% endif %}
+        </div>      
+      </div>
+      <div class="section">
+        <div class="container-1 container-3">
+          <div class="title-7 roboto-bold-black-40px">Welcome to Lieferspatz</div>
+          <p class="description roboto-bold-black-16px">Bringing convenience to your doorstep</p>
+        </div>
+        <img class="vector-200" src="img/vector-200.svg" alt="Vector 200" />
+      </div>
+      <div class="products">
+        <img class="vector-200-1 vector-200-4" src="img/vector-200.svg" alt="Vector 200" />
+        <h1 class="title-8">
+          <span>Order History<br /></span><span class="roboto-bold-black-20px">Here you can see all your orders.</span>
+        </h1>
+        <div class="list">
+          <div class="row">
+            <div class="card">
+              <div class="text-content"><div class="title roboto-semi-bold-black-24px">Ongoing orders</div></div>
+            </div>
+            {% if orders %}
+            <div class="card-1 card-3">
+              {% for order in orders %}
+              <div class="text-content-1">
+                <div class="title-1 roboto-semi-bold-black-24px">Order: {{ order.user_id }}</div>
+                <div class="subtitle roboto-bold-black-14px">23.11.2024</div>
+                <p class="subtitle roboto-bold-black-14px">1x Truffle Mushroom Risotto<br />1x Chocolate Lava Cake</p>
+                <div class="subtitle roboto-bold-black-14px">Order Total: 28,49 $</div>
+                <div class="subtitle-1 roboto-bold-black-14px">Status: Being delivered</div>
+                {% endfor %}
+              </div>
+              {% else %}
+              <div class="title-2 roboto-semi-bold-black-24px">You have no orders yet.</div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <div class="list-1">
+          <div class="row-1 row-4">
+            <div class="card">
+              <div class="text-content">
+                <div class="title roboto-semi-bold-black-24px">Completed/Canceled Orders</div>
+              </div>
+            </div>
+            <div class="card-1 card-3">
+              <div class="text-content-1">
+                <div class="title-1 roboto-semi-bold-black-24px">Order #00001</div>
+                <div class="subtitle roboto-bold-black-14px">22.11.2024</div>
+                <p class="subtitle roboto-bold-black-14px">1x Truffle Mushroom Risotto<br />1x Chocolate Lava Cake</p>
+                <div class="subtitle roboto-bold-black-14px">Order Total: 0 $</div>
+                <div class="subtitle-1 roboto-bold-black-14px">Status: Cancelled</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="button-1">
+          <div class="primary"><div class="title-9">Back to Nearby Restaurants</div></div>
+        </div>
+      </div>
+      <div class="footer-1 roboto-bold-black-16px">
+          <p class="title-10 valign-text-middle">© 2024 Lieferspatz. All Rights Reserved</p>
+          <div class="title-10 valign-text-middle">Terms &amp; Conditions</div>
+          <div class="title-10 valign-text-middle">Privacy Policy</div>
+      </div>
+    </div>
+  </body>
+</html>

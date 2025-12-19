@@ -1,0 +1,401 @@
+/* screen - restaurant-add-item */
+
+.restaurant-add-item {
+  align-items: center;
+  background-color: var(--fuschia100);
+  display: flex;
+  flex-direction: column;
+  padding: auto;
+  position: relative;
+}
+
+.restaurant-add-item .title-1 {
+  flex: 1;
+  letter-spacing: 0;
+  line-height: 36px;
+  position: relative;
+}
+
+.restaurant-add-item .title-2 {
+  letter-spacing: 0;
+  line-height: 48px;
+  margin-top: -1.00px;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+.restaurant-add-item .orders {
+  align-self: stretch;
+  background-color: var(--fuschia100);
+  height: 1000px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.restaurant-add-item .vector-200-1 {
+  height: 1px;
+  left: 0;
+  object-fit: cover;
+  position: absolute;
+  top: 792px;
+  width: 1440px;
+}
+
+.restaurant-add-item .title-3 {
+  left: 89px;
+  letter-spacing: 0;
+  line-height: 48px;
+  position: absolute;
+  top: 76px;
+  width: 1247px;
+}
+
+.restaurant-add-item .card {
+  align-items: center;
+  border: 1px solid;
+  border-color: var(--black-2);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  height: 129px;
+  left: 91px;
+  overflow: hidden;
+  position: absolute;
+  top: 770px;
+  width: 1257px;
+}
+
+.restaurant-add-item .text-content {
+  align-self: stretch;
+  flex: 0 0 auto;
+  position: relative;
+  width: 100%;
+}
+
+.restaurant-add-item .subtitle {
+  left: 758px;
+  letter-spacing: 0;
+  line-height: 20px;
+  position: absolute;
+  top: 50px;
+  width: 221px;
+}
+
+.restaurant-add-item .subtitle-1 {
+  font-size: 18px;
+  left: 12px;
+  letter-spacing: 0;
+  line-height: 20px;
+  position: absolute;
+  top: 54px;
+  width: 628px;
+}
+
+.restaurant-add-item .title-4 {
+  left: 12px;
+  letter-spacing: 0;
+  line-height: 24px;
+  position: absolute;
+  align-self: center;
+  top: 17px;
+  left: 510px;
+  width: 600px;
+}
+
+.restaurant-add-item .title-9{
+  font-family: var(--font-family-roboto);
+  font-size: 24px;
+  left: 12px;
+  letter-spacing: 0;
+  line-height: 24px;
+  position: absolute;
+  align-self: center;
+  top: 17px;
+  width: 600px;
+}
+
+.restaurant-add-item .button-1 {
+  height: 51px;
+  left: 1055px;
+  position: absolute;
+  top: 39px;
+  width: 181px;
+}
+
+.restaurant-add-item .button-danger {
+  font-family: var(--font-family-roboto);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--iris100);
+  border-radius: 8px;
+  box-shadow: 0px 4px 4px #00000040;
+  padding: 12px 16px;
+  height: 40px;
+  min-width: 100px;  /* Ensures button consistency */
+  font-size: 14px;
+  font-weight: bold;
+  color: white; /* Ensures text is visible */
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.restaurant-add-item .button {
+  color: var(--fuschia100);
+  font-weight: 400;
+  line-height: 16px;
+  margin-bottom: -7.00px;
+  margin-top: -9.00px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.restaurant-add-item .top-bar {
+  align-items: center;
+  background-color: var(--fuschia100);
+  box-shadow: 0px 0px 6px #0000001f;
+  display: flex;
+  gap: 11%;
+  height: 80px;
+  justify-content: center;
+  left: 0;
+  overflow: hidden;
+  padding: 20px 20px 20px 0px;
+  position: relative;
+  top: 0;
+  width: 100%;
+}
+
+.restaurant-add-item .primary-1 {
+  align-items: center;
+  background-color: var(--iris100);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  height: 51px;
+  justify-content: center;
+  left: 1055px;
+  padding: 12px;
+  position: absolute;
+  top: 39px;
+  width: 181px;
+}
+
+.restaurant-add-item .title {
+  color: white;
+  letter-spacing: 0;
+  line-height: 24px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+
+.restaurant-add-item .primary {
+  align-items: center;
+  background-color: var(--iris100);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  height: 51px;
+  justify-content: center;
+  padding: 12px;
+  position: relative;
+  left: 420px;
+  top: 60px;
+  width: 181px;
+}
+
+.restaurant-add-item .primary-2 {
+  align-items: center;
+  background-color: var(--iris100);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  height: 51px;
+  justify-content: center;
+  padding: 12px;
+  position: relative;
+  width: 181px;
+}
+
+.restaurant-add-item .button-3 {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 51px;
+  left: 782px;
+  position: absolute;
+  top: 600px;
+  width: 181px;
+}
+
+.restaurant-add-item .primary-3 {
+  align-items: center;
+  background-color: var(--iris100);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  height: 51px;
+  justify-content: center;
+  padding: 12px;
+  position: relative;
+  width: 181px;
+}
+
+.restaurant-add-item .button-4 {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 51px;
+  left: 540px;
+  position: absolute;
+  top: 600px;
+  width: 181px;
+}
+
+.restaurant-add-item .example {
+  left: 94px;
+  letter-spacing: 0;
+  line-height: 48px;
+  position: absolute;
+  top: 700px;
+  white-space: nowrap;
+  width: 1254px;
+}
+
+.restaurant-add-item .card-1 {
+  top: 171px;
+}
+
+.restaurant-add-item .card-2 {
+  top: 240px;
+}
+
+.restaurant-add-item .card-3 {
+  top: 319px;
+}
+
+.restaurant-add-item .title-5 {
+  left: 363px;
+  letter-spacing: 0;
+  line-height: 48px;
+  position: absolute;
+  top: 170px;
+  white-space: nowrap;
+  width: 123px;
+}
+
+.restaurant-add-item .title-6 {
+  align-self: stretch;
+  letter-spacing: 0;
+  line-height: 28px;
+  margin-left: -0.50px;
+  margin-top: -1.00px;
+  position: relative;
+  text-align: center;
+  width: 352px;
+}
+
+.restaurant-add-item .title-7 {
+  align-self: stretch;
+  letter-spacing: 0;
+  line-height: 28px;
+  margin-top: -1.00px;
+  position: relative;
+  text-align: center;
+  width: 175px;
+}
+
+.restaurant-add-item .title-8 {
+  align-self: stretch;
+  letter-spacing: 0;
+  line-height: 28px;
+  margin-right: -0.50px;
+  margin-top: -1.00px;
+  position: relative;
+  text-align: center;
+  width: 124px;
+}
+
+.input-field {
+  width: 100%; /* Full width for each input */
+  padding: 12px;
+  border: 1px solid var(--black-2);
+  border-radius: 5px;
+  background-color: white;
+  font-size: 16px;
+}
+
+/* The form container (acts like a window with shadow) */
+.form-container {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Creates the shadow effect */
+  padding: 40px;
+  width: 100%;
+  max-width: 900px; /* Restrict width to prevent it from becoming too wide */
+  margin: 0 auto; /* Center the container horizontally */
+  margin-top: 150px;
+  margin-left: 315px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Space between each input field */
+  flex: 1; /* This makes each column take up an equal amount of space */
+}
+
+/* The entire form */
+.add-item-form {
+  display: flexbox;
+  gap: 40px; /* Gap between the two columns */
+  width: 100%;
+}
+
+/* Container for both columns */
+.form-columns {
+  display: flex;
+  width: 100%;
+  column-gap: 40px; /* Space between left and right columns */
+}
+
+input[type="text"], input[type="number"], textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid var(--black-2);
+  border-radius: 4px;
+}
+
+.restaurant-add-item .title-10 {
+  align-self: stretch;
+  line-height: 28px;
+  margin-top: -1.00px;
+  text-align: center;
+  width: 175px;
+}
+
+.restaurant-add-item .title-11 {
+  align-self: stretch;
+  line-height: 28px;
+  margin-right: -0.50px;
+  margin-top: -1.00px;
+  text-align: center;
+  width: 124px;
+}
+
+.restaurant-add-item .title-12 {
+  letter-spacing: 0;
+  position: relative;
+}
+
+
+
+

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=100%, maximum-scale=1.0" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='customer-menu.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styleguide.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='globals.css') }}">
+    </head>
+  <body style="margin: 0; background: #ffffff">
+    <div class="customer-menu screen">
+      <div class="flash-messages">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <ul>
+              {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+      </div>
+      <div id="balance-modal" class="modal hidden">
+        <div class="modal-content">
+          <span class="close-button" id="close-balance-modal">&times;</span>
+          <p id="balance-text">Your balance is: €0.00</p>
+        </div>
+      </div>   
+      <script src="{{ url_for('static', filename='js/globals.js') }}"></script>
+      <!-- Navigation -->
+      <div class="top-bar">
+        <img class="logo-lieferspatz-1" src="{{ url_for('static', filename='img/logo-lieferspatz-1.png') }}" alt="logo lieferspatz 1" />
+        <div class="navigation">
+          <a href="{{ url_for('home') }}" class="button button-danger">Home</a>
+          <a href="{{ url_for('signup') }}" class="button button-danger">Sign up</a>      
+          <a href="{{ url_for('login') }}" class="button button-danger">Log in</a>
+          <a href="{{ url_for('show_restaurants') }}" class="button button-danger">Restaurants</a>
+          {% if session['user_id'] %}
+              <a href="#" id="balance-btn" class="button button-danger">Balance</a>
+              <a href="{{ url_for('cart') }}" class="button button-danger">Cart</a> 
+              <a href="{{ url_for('orders') }}" class="button button-danger">Orders</a>
+              <a href="{{ url_for('logout') }}" class="button button-danger">Logout</a>
+              <span class="user-welcome">Welcome {{ session['user_name'] }}</span>
+          {% else %}
+              <a href="{{ url_for('login') }}" class="button button-danger">Login</a>
+              <a href="{{ url_for('signup') }}" class="button button-danger">Sign Up</a>
+          {% endif %}
+        </div> 
+      </div>
+      <!-- Welcome Section -->
+      <div class="section">
+        <div class="container">
+          <div class="title-1 roboto-bold-black-40px">Welcome to Lieferspatz</div>
+          <p class="description roboto-bold-black-16px">Bringing convenience to your doorstep</p>
+        </div>
+        <img class="vector-200" src="static/img/vector-200-8.svg" alt="Vector 200" />
+      </div>
+      <!-- Restaurant Menu Section -->
+      <div class="orders">
+        <div class="container-1">
+            {% if menu_items %}
+                {% for item in menu_items %}
+                    <div class="card">
+                        <div class="text-content">
+                            <div class="title roboto-bold-black-24px">{{ item.Name }}</div>
+                            <p class="subtitle-1 roboto-regular-black-16px">{{ item.Description }}</p>
+                            <p class="subtitle roboto-regular-black-16px">Price: {{ item.Price }} €</p>
+                        </div>
+                        <form action="{{ url_for('add_to_cart', menu_item_id=item.MenuItemID) }}" method="GET">
+                            <button type="submit" class="primary">Add to Cart</button>
+                        </form>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="description-1 roboto-bold-black-16px">This menu has no items yet.</p>
+            {% endif %}
+        </div>
+    </div>
+    <!-- Footer Section -->
+    <div class="section-1">
+        <p>© 2024 Lieferspatz. All Rights Reserved</p>
+        <p>Terms & Conditions</p>
+        <p>Privacy Policy</p> 
+    </div>
+</div>
+  </body>
+</html>

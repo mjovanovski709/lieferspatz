@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=100%, maximum-scale=1.0" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='restaurant-edit-item.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styleguide.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='globals.css')}}">
+  </head>
+  <body style="margin: 0; background: #ffffff">
+    <div class="restaurant-edit-item screen">
+      <!-- Flash Messages -->
+      <div class="flash-messages">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <ul>
+              {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+      </div>
+      <script src="{{ url_for('static', filename='js/globals.js') }}"></script>
+      <!-- Top Bar -->
+      <div class="top-bar">
+        <img class="logo-lieferspatz-1" src="{{ url_for('static', filename='img/logo-lieferspatz-1.png') }}" alt="logo lieferspatz" />
+        <div class="navigation">
+          <a href="{{ url_for('home') }}" class="button button-danger">Home</a>
+          <a href="{{ url_for('about') }}" class="button button-danger">About us</a>
+          {% if session['user_id'] %}
+              <a href="#" id="balance-btn" class="button button-danger">Earnings</a>
+              <a href="{{ url_for('restaurant_menu', restaurant_id=restaurant.RestaurantID) }}" class="button button-danger">Menu</a>
+              <a href="{{ url_for('restaurant_orders', restaurant_id=restaurant.RestaurantID) }}" class="button button-danger">Orders</a>
+              <a href="{{ url_for('logout') }}" class="button button-danger">Logout</a>
+              <span class="user-welcome">Welcome {{ session['user_name'] }}</span>
+          {% else %}
+              <a href="{{ url_for('login') }}" class="button button-danger">Login</a>
+              <a href="{{ url_for('signup') }}" class="button button-danger">Sign Up</a>
+          {% endif %}
+        </div>
+      </div>
+      <!-- Section -->
+      <div class="section">
+        <div class="container">
+          <div class="title-2 roboto-bold-black-40px">Welcome to Lieferspatz</div>
+          <p class="description roboto-bold-black-16px">Bringing convenience to your doorstep</p>
+        </div>
+        <img class="vector-200" src="{{ url_for('static', filename='img/vector-200-8.svg') }}" alt="Vector 200" />
+      </div>
+      <!-- Form Section -->
+      <div class="orders">
+        <h1 class="title-4 roboto-bold-black-50px">
+          <span class="roboto-bold-black-50px">Edit menu item</span><br />
+          <span class="roboto-bold-black-20px">Modify the details below to update your menu item.</span>
+        </h1>
+        <!-- Form for editing an existing item -->
+        <div class="form-container">
+          <form id="edit-item-form" action="{{ url_for('restaurant_edit_item', restaurant_id=restaurant.RestaurantID, item_id=item.MenuItemID) }}" method="POST" class="edit-item-form">
+            <div class="form-columns">
+              <div class="column">
+                <label for="item_name" class="roboto-bold-black-20px">Name of the item:</label>
+                <input type="text" id="item_name" name="item_name" class="input-field" value="{{ item.Name }}" placeholder="Enter the name of the item" required>
+                
+                <label for="item_description" class="roboto-bold-black-20px">Item Description:</label>
+                <input type="text" id="item_description" name="item_description" class="input-field" value="{{ item.Description }}" placeholder="Enter item description" required>
+                
+                <label for="item_price" class="roboto-bold-black-20px">Price:</label>
+                <input type="number" id="item_price" name="item_price" class="input-field" value="{{ item.Price }}" placeholder="Enter the price of the item" step="0.01" required>
+              </div>
+            </div>
+            <!-- Submit Button -->
+            <div class="button-4">
+              <button type="submit" class="primary-3">
+                <div class="title roboto-bold-white-16px">Save changes</div>
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="button-3">
+          <a href="{{ url_for('restaurant_menu', restaurant_id=restaurant.RestaurantID) }}" class="primary-2">
+            <div class="title roboto-bold-white-16px">Go back to menu</div>
+          </a>
+        </div>
+      </div>
+      <!-- Footer -->
+      <div class="section-1">
+        <div class="container-3 container-4 roboto-regular-normal-black-16px">
+          <p class="title-10 valign-text-middle title-13">© 2024 Lieferspatz. All Rights Reserved</p>
+          <div class="title-11 valign-text-middle title-13">Terms &amp; Conditions</div>
+          <div class="title-12 valign-text-middle title-13">Privacy Policy</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

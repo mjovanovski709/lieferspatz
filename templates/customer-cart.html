@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=100%, maximum-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="static/customer-cart.css" />
+    <link rel="stylesheet" type="text/css" href="static/styleguide.css" />
+    <link rel="stylesheet" type="text/css" href="static/globals.css" />
+  </head>
+  <body style="margin: 0; background: #ffffff">
+    <input type="hidden" id="anPageName" name="page" value="customer-cart" />
+    <div class="customer-cart screen">
+      <div class="flash-messages">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <ul>
+              {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+      </div>
+      <div id="balance-modal" class="modal hidden">
+        <div class="modal-content">
+          <span class="close-button" id="close-balance-modal">&times;</span>
+          <p id="balance-text">Your balance is: €0.00</p>
+        </div>
+      </div>   
+      <script src="{{ url_for('static', filename='js/globals.js') }}"></script>
+      <!-- Navigation -->
+      <div class="top-bar">
+        <img class="logo-lieferspatz-1" src="{{ url_for('static', filename='img/logo-lieferspatz-1.png') }}" alt="logo lieferspatz 1" />
+        <div class="navigation">
+          <a href="{{ url_for('home') }}" class="button button-danger">Home</a>
+          <a href="{{ url_for('signup') }}" class="button button-danger">Sign up</a>      
+          <a href="{{ url_for('login') }}" class="button button-danger">Log in</a>
+          <a href="{{ url_for('about') }}" class="button button-danger">About us</a>
+          {% if session['user_id'] %}
+              <a href="#" id="balance-btn" class="button button-danger">Balance</a>
+              <a href="{{ url_for('cart') }}" class="button button-danger">Cart</a> 
+              <a href="{{ url_for('orders') }}" class="button button-danger">Orders</a>
+              <a href="{{ url_for('logout') }}" class="button button-danger">Logout</a>
+              <span class="user-welcome">Welcome {{ session['user_name'] }}</span>
+          {% else %}
+              <a href="{{ url_for('login') }}" class="button button-danger">Login</a>
+              <a href="{{ url_for('signup') }}" class="button button-danger">Sign Up</a>
+          {% endif %}
+        </div>  
+      </div>
+      <!-- Welcome Section -->
+      <div class="section">
+        <div class="container">
+          <div class="title-1 roboto-bold-black-40px">Welcome to Lieferspatz</div>
+          <p class="description roboto-bold-black-16px">Bringing convenience to your doorstep</p>
+        </div>
+        <img class="vector-200" src="static/img/vector-200-8.svg" alt="Vector 200" />
+      </div>
+      <div class="orders">
+        <img class="vector-200-1" src="{{ url_for('static', filename='img/vector-200-8.svg') }}" alt="Vector 200" />
+        <h1 class="title-4 roboto-bold-black-50px">Items in your cart</h1> 
+        {% if cart_items %}
+        <div class="card">
+          {% for cart_item in cart_items %}
+          <div class="cart-item">
+              <div class="title-6 roboto-semi-bold-black-32px">{{ cart_item.Name }}</div>
+              <p class="subtitle roboto-bold-black-20px">{{ cart_item.Description }}</p>
+              <div class="subtitle-4 roboto-bold-black-32px">Price: {{ cart_item.Price }} €</div>
+              <div class="quantity-control">
+                  <a href="{{ url_for('remove_from_cart', menu_item_id=cart_item.MenuItemID) }}" class="quantity-button">-</a>
+                  <div class="quantity-display">{{ cart_item.Quantity }}</div>
+                  <a href="{{ url_for('add_to_cart', menu_item_id=cart_item.MenuItemID) }}" class="quantity-button">+</a>
+              </div>
+          </div>
+          {% endfor %}
+      </div>
+        <!-- Display Order Total -->
+        <div class="order-total">
+          <p class="subtitle-4 roboto-bold-black-24px">Order Total: {{ total_price }} €</p>
+        </div>
+        <!-- Complete Order Button (form to handle POST request) -->
+        <form action="{{ url_for('create_order') }}" method="POST">
+            <!-- Hidden fields to send data to create_order route -->
+            <input type="hidden" name="customer_id" value="{{ session['user_id'] }}">
+            <input type="hidden" name="total_amount" value="{{ total_price }}">
+            <textarea name="note" class="subtitle-5 roboto-bold-black-14px" placeholder="Add a note for the restaurant"></textarea>
+            <!-- Add hidden fields for cart items as JSON -->
+            <input type="hidden" name="items" id="items-data">
+            <div class="button-1">
+                <button type="submit" class="primary">
+                    <div class="title-2 roboto-bold-white-16px">Complete Order</div>
+                </button>
+            </div>
+        </form>
+    {% else %}
+        <div class="title-5 roboto-semi-bold-black-24px">You have no items in your cart yet.</div>
+        <!-- View Restaurants Button -->
+        <div class="button-1">
+            <a href="{{ url_for('show_restaurants') }}" class="primary">
+                <div class="title-2 roboto-bold-white-16px">View Restaurants</div>
+            </a>
+        </div>
+    {% endif %}
+      </div>  
+      <div class="section-1">
+        <div class="container-3 container-4 roboto-regular-normal-black-16px">
+          <p class="title-9 valign-text-middle title-12">© 2024 Lieferspatz. All Rights Reserved</p>
+          <div class="title-10 valign-text-middle title-12">Terms &amp; Conditions</div>
+          <div class="title-11 valign-text-middle title-12">Privacy Policy</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

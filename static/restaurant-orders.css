@@ -1,0 +1,507 @@
+/* screen - restaurant-orders */
+
+.restaurant-orders {
+  align-items: center;
+  background-color: var(--fuschia100);
+  display: flex;
+  flex-direction: column;
+  padding: auto;
+  position: relative;
+  width: 100%;
+}
+
+.restaurant-orders .top-bar {
+  align-items: center;
+  background-color: var(--fuschia100);
+  box-shadow: 0px 0px 6px #0000001f;
+  display: flex;
+  gap: 7%;
+  height: 80px;
+  justify-content: center;
+  left: 0;
+  overflow: hidden;
+  padding: 20px 20px 20px 0px;
+  position: relative;
+  top: 0;
+  width: 100%;
+}
+
+.restaurant-orders .logo-lieferspatz-1 {
+  height: 104px;
+  margin-bottom: -32.00px;
+  margin-top: -32.00px;
+  object-fit: cover;
+  position: relative;
+  width: 142px;
+}
+
+.restaurant-orders .text-content .title-2 {
+  text-align: center;
+  font-size: 20px;
+  color: #555;
+  margin-top: 20px;
+}
+
+
+
+.restaurant-orders .navigation {
+  align-items: center;
+  background-color: var(--fuschia100);
+  display: inline-flex;
+  flex: 0 0 auto;
+  gap: 40px;
+  justify-content: center;
+  position: relative;
+}
+
+.restaurant-orders .button-reject {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  margin-top: 50%;
+  left: 50%;
+}
+
+
+.restaurant-orders .button-danger {
+  font-family: var(--font-family-roboto);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--iris100);
+  border-radius: 8px;
+  box-shadow: 0px 4px 4px #00000040;
+  padding: 12px 16px;
+  height: 40px;
+  min-width: 100px;  /* Ensures button consistency */
+  font-size: 14px;
+  font-weight: bold;
+  color: white; /* Ensures text is visible */
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.restaurant-orders .button {
+  color: var(--fuschia100);
+  font-weight: 400;
+  line-height: 16px;
+  margin-bottom: -7.00px;
+  margin-top: -9.00px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.restaurant-orders .button-danger-1 {
+  width: 91px;
+}
+
+.restaurant-orders .button-danger-2 {
+  width: 87px;
+}
+
+.restaurant-orders .section {
+  align-items: center;
+  align-self: stretch;
+  background-color: #044d3933;
+  display: flex;
+  flex: 0 0 auto;
+  gap: 60px;
+  justify-content: center;
+  overflow: hidden;
+  padding: 60px 170px;
+  position: relative;
+  width: 100%;
+}
+
+.restaurant-orders .container {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 24px;
+  position: relative;
+}
+
+.restaurant-orders .title-3 {
+  color: var(--black);
+  font-family: var(--font-family-roboto);
+  font-size: var(--font-size-xxxl);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 48px;
+  margin-top: -1.00px;
+  position: relative;
+  text-align: center;
+  width: 520px;
+}
+
+.restaurant-orders .description {
+  letter-spacing: 0;
+  line-height: 24px;
+  position: relative;
+  text-align: center;
+  width: 520px;
+}
+
+.restaurant-orders .vector-200 {
+  height: 1px;
+  left: 0;
+  object-fit: cover;
+  position: absolute;
+  top: 216px;
+  width: 100%;
+}
+
+.restaurant-orders .orders {
+  align-items: center;
+  background-color: var(--fuschia100);
+  height: auto;
+  position: relative;
+  width: 100%;
+}
+
+.restaurant-orders .title-4 {
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 48px;
+  position: relative;
+  width: 100%;
+}
+
+.restaurant-orders .title-5 {
+  letter-spacing: 0;
+  line-height: 48px;
+  position: relative;
+  top: 39px;
+  left: 700px;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.restaurant-orders .title-6 {
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 48px;
+  position: relative;
+  width: 100%;
+}
+
+.restaurant-orders .container-2 {
+  align-self: stretch;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.restaurant-orders .container-3 {
+  gap: 60px;
+  height: 100px;
+  justify-content: center;
+  width: 770px;
+}
+
+.restaurant-orders .title-10 {
+  align-self: stretch;
+  line-height: 28px;
+  margin-left: -0.50px;
+  margin-top: -1.00px;
+  text-align: center;
+  width: 352px;
+}
+
+.restaurant-orders .title-11 {
+  align-self: stretch;
+  line-height: 28px;
+  margin-top: -1.00px;
+  text-align: center;
+  width: 175px;
+}
+
+.restaurant-orders .title-12 {
+  align-self: stretch;
+  line-height: 28px;
+  margin-right: -0.50px;
+  margin-top: -1.00px;
+  text-align: center;
+  width: 124px;
+}
+
+.restaurant-orders .title-13 {
+  letter-spacing: 0;
+  position: relative;
+}
+
+
+.restaurant-orders .card {
+  align-items: start;
+  align-self: center !important;
+  border: 1px solid;
+  border-color: var(--black-2);
+  border-radius: 6px;
+  display: flex !important;
+  flex-direction: column !important;
+  height: 152px;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.restaurant-orders .order-card {
+  align-self: center !important;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 50%;
+  justify-content: center !important;
+  justify-self: center !important;
+}
+
+
+
+
+.restaurant-orders .title {
+  align-self: stretch;
+  color: var(--black);
+  font-family: var(--font-family-roboto);
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 24px;
+  margin-top: -1.00px;
+  position: relative;
+}
+
+.restaurant-orders .subtitle {
+  align-self: stretch;
+  letter-spacing: 0;
+  line-height: 20px;
+  position: relative;
+}
+
+.restaurant-orders .subtitle-1 {
+  top: 90px;
+  width: 219px;
+}
+
+.restaurant-orders .subtitle-2 {
+  top: 54px;
+  width: 211px;
+}
+
+.restaurant-orders .button-success {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  position: relative;
+  margin-left: 100%;
+  top: 50%;
+  width: 55%;
+}
+
+.restaurant-orders .button-1 {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 35px;
+  position: relative;
+  left: 70%;
+  margin-top: -40%;
+}
+
+.restaurant-orders .primary {
+  align-items: center;
+  background-color: var(--iris100);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  height: 51px;
+  justify-content: center;
+  padding: 12px;
+  position: relative;
+  width: 181px;
+}
+
+.restaurant-orders .title-1 {
+  color: var(--fuschia100);
+  font-family: var(--font-family-roboto);
+  font-size: var(--font-size-m);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 24px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.restaurant-orders .button-2 {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 35px;
+  position: relative;
+  left: 230%;
+  margin-top: -16%;
+}
+
+.restaurant-orders .primary-1 {
+  align-items: center;
+  background-color: #ba4b4b;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  height: 51px;
+  justify-content: center;
+  padding: 12px;
+  position: relative;
+  width: 181px;
+}
+
+.restaurant-orders .section-1 {
+  align-items: center;
+  align-self: stretch;
+  background-color: #044d3933;
+  display: flex;
+  flex: 0 0 auto;
+  gap: 60px;
+  justify-content: center;
+  padding: 60px;
+  position: relative;
+  width: 100%;
+}
+
+.restaurant-orders .container-1 {
+  align-items: center;
+  display: flex;
+  gap: 60px;
+  height: 100px;
+  justify-content: center;
+  position: relative;
+  width: 770px;
+}
+
+.restaurant-orders .title-7 {
+  align-self: stretch;
+  letter-spacing: 0;
+  line-height: 28px;
+  margin-left: -0.50px;
+  margin-top: -1.00px;
+  position: relative;
+  text-align: center;
+  width: 352px;
+}
+
+.restaurant-orders .title-8 {
+  align-self: stretch;
+  letter-spacing: 0;
+  line-height: 28px;
+  margin-top: -1.00px;
+  position: relative;
+  text-align: center;
+  width: 175px;
+}
+
+.restaurant-orders .title-9 {
+  align-self: stretch;
+  letter-spacing: 0;
+  line-height: 28px;
+  margin-right: -0.50px;
+  margin-top: -1.00px;
+  position: relative;
+  text-align: center;
+  width: 124px;
+}
+
+.restaurant-orders .button-danger-3 {
+  align-items: center;
+  background-color: var(--iris100);
+  border-radius: 8px;
+  box-shadow: 0px 4px 4px #00000040;
+  display: flex;
+  gap: 8px;
+  height: 24px;
+  justify-content: center;
+  overflow: hidden;
+  padding: 12px;
+  position: relative;
+}
+
+.restaurant-orders .subtitle-3 {
+  left: 999px;
+  letter-spacing: 0;
+  line-height: 20px;
+  position: absolute;
+}
+
+
+
+
+
+/* Ongoing Orders Container */
+.restaurant-orders .ongoing-orders-wrapper {
+  max-height: 400px;    /* Set a fixed height as per your design */
+  overflow-y: auto;     /* Enable vertical scrolling */
+  padding-right: 15px;  /* Adjust padding if needed for scrollbars */
+}
+
+/* Completed Orders Container */
+.restaurant-orders .completed-orders-wrapper {
+  max-height: 400px;    /* Set a fixed height as per your design */
+  overflow-y: auto;     /* Enable vertical scrolling */
+  padding-right: 15px;  /* Adjust padding if needed for scrollbars */
+}
+
+.restaurant-orders .row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+  gap: 20px; /* Space between each card */
+}
+
+
+.restaurant-orders .scrollable-items {
+  max-height: 400px;   /* Adjust height for the item list in each order */
+  overflow-y: auto;
+}
+
+/* Optional: For better aesthetics, you can style the scrollbars */
+.restaurant-orders .ongoing-orders-wrapper::-webkit-scrollbar,
+.completed-orders-wrapper::-webkit-scrollbar {
+  width: 20px;
+}
+
+.restaurant-orders .ongoing-orders-wrapper::-webkit-scrollbar-thumb,
+.completed-orders-wrapper::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+}
+
+.restaurant-orders .ongoing-orders-wrapper::-webkit-scrollbar-track,
+.completed-orders-wrapper::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+.restaurant-orders .orders-container,
+.restaurant-orders .orders-container-1 {
+    max-height: auto; /* Adjust as needed */
+    align-items: center !important;
+    justify-content: center !important;
+    margin-top: auto;
+    position: relative;
+    overflow-y: auto;
+    margin-bottom: auto;
+  }
